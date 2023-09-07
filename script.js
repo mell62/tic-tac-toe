@@ -37,12 +37,11 @@ const gameBoard = (() => {
 })();
 
 const displayController = (() => {
-  const board = gameBoard.getBoard();
-
   //DOM cache
   const cells = document.querySelectorAll(".ttt-cell");
 
   const render = () => {
+    const board = gameBoard.getBoard();
     let row;
     let column;
     totalCells = cells.length;
