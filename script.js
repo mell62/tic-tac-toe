@@ -42,7 +42,8 @@ const gameBoard = (() => {
     let column = 0;
     if (
       rowVictory(row, column, numberOfRows) ||
-      columnVictory(row, column, numberOfColumns)
+      columnVictory(row, column, numberOfColumns) ||
+      diagonalVictory(row, column)
     ) {
       return true;
     }
@@ -55,6 +56,7 @@ const gameBoard = (() => {
         board[row][column + 1] === board[row][column + 2]
       ) {
         if (board[row][column]) {
+          //check for empty cell
           return true;
         }
       }
@@ -68,14 +70,33 @@ const gameBoard = (() => {
         board[row + 1][column] === board[row + 2][column]
       ) {
         if (board[row][column]) {
+          //check for empty cell
           return true;
         }
       }
     }
   };
-  // console.log(
-  //   row[column] === row[column + 1] && row[column + 1] === row[column + 2]
-  // );
+
+  const diagonalVictory = (row, column) => {
+    if (
+      //left-to-right diagonal
+      board[row][column] === board[row + 1][column + 1] &&
+      board[row + 1][column + 1] === board[row + 2][column + 2]
+    ) {
+      if (board[row][column]) {
+        return true;
+      }
+    } else if (
+      //right-to-left diagonal
+      board[row + 2][column] === board[row + 1][column + 1] &&
+      board[row + 1][column + 1] === board[row][column + 2]
+    ) {
+      if (board[row + 2][column]) {
+        //check for empty cell
+        return true;
+      }
+    }
+  };
 
   return { getBoard, playGame };
 })();
