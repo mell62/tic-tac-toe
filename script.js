@@ -20,18 +20,62 @@ const gameBoard = (() => {
   };
 
   const playGame = (cell) => {
-    playerToken = getPlayerToken();
-    let row = Math.trunc(cell / 3);
-    let column = cell % 3;
-    if (!board[row][column]) {
-      board[row][column] = playerToken;
-      switchPlayer();
+    if (!identifyWin()) {
+      playerToken = getPlayerToken();
+      let row = Math.trunc(cell / 3);
+      let column = cell % 3;
+      if (!board[row][column]) {
+        board[row][column] = playerToken;
+        switchPlayer();
+      }
     }
   };
 
   const switchPlayer = () => {
     playerTurn === 1 ? (playerTurn = 2) : (playerTurn = 1);
   };
+
+  const identifyWin = () => {
+    let numberOfRows = board.length;
+    let numberOfColumns = board[0].length;
+    let row = 0;
+    let column = 0;
+    if (
+      rowVictory(row, column, numberOfRows) ||
+      columnVictory(row, column, numberOfColumns)
+    ) {
+      return true;
+    }
+  };
+
+  const rowVictory = (row, column, numberOfRows) => {
+    for (row; row < numberOfRows; row++) {
+      if (
+        board[row][column] === board[row][column + 1] &&
+        board[row][column + 1] === board[row][column + 2]
+      ) {
+        if (board[row][column]) {
+          return true;
+        }
+      }
+    }
+  };
+
+  const columnVictory = (row, column, numberOfColumns) => {
+    for (column; column < numberOfColumns; column++) {
+      if (
+        board[row][column] === board[row + 1][column] &&
+        board[row + 1][column] === board[row + 2][column]
+      ) {
+        if (board[row][column]) {
+          return true;
+        }
+      }
+    }
+  };
+  // console.log(
+  //   row[column] === row[column + 1] && row[column + 1] === row[column + 2]
+  // );
 
   return { getBoard, playGame };
 })();
