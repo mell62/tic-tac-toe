@@ -1,38 +1,79 @@
 const gameBoard = (() => {
   let board = [
-    ["X", "O", "X"],
-    ["X", "O", "X"],
-    ["X", "O", "X"],
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""],
   ];
 
   const getBoard = () => board;
 
-  return { getBoard };
+  let playerTurn = 1;
+  let playerToken;
+
+  const playGame = (cell) => {
+    if (playerTurn == 1) {
+      playerToken = player1.getToken();
+    } else {
+      playerToken = player2.getToken();
+    }
+    let row = Math.trunc(cell / 3);
+    let column = cell % 3;
+    if (!board[row][column]) {
+      board[row][column] = playerToken;
+      switchPlayer();
+    }
+  };
+
+  const switchPlayer = () => {
+    playerTurn === 1 ? (playerTurn = 2) : (playerTurn = 1);
+  };
+
+  return { getBoard, playGame };
 })();
 
 const displayController = (() => {
-  let board = gameBoard.getBoard();
+  const board = gameBoard.getBoard();
 
   //DOM cache
-  let cells = document.querySelectorAll(".ttt-cell");
-
-  //bind events
+  const cells = document.querySelectorAll(".ttt-cell");
 
   const render = () => {
-    let row = 0;
-    let column = 0;
-    for (let i = 1; i < cells.length + 1; i++) {
-      cells[i - 1].textContent = board[row][column];
-      column++;
-      if (i % 3 === 0) {
-        // Jump to next row
-        row++;
-        column = 0;
-      }
+    let row;
+    let column;
+    totalCells = cells.length;
+    for (let i = 0; i < totalCells; i++) {
+      row = Math.trunc(i / 3);
+      column = i % 3;
+      cells[i].textContent = board[row][column];
     }
   };
+
+  const clickRender = (cell) => {
+    let index = cell.getAttribute("data-index");
+    gameBoard.playGame(index);
+    render();
+  };
+
+  //bind events
+  cells.forEach((cell) => {
+    cell.addEventListener("click", clickRender.bind(null, cell));
+  });
 
   return { render };
 })();
 
 displayController.render();
+
+const playerFactory = (name, token) => {
+  const getName = () => {
+    return name;
+  };
+
+  const getToken = () => {
+    return token;
+  };
+  return { getName, getToken };
+};
+
+const player1 = playerFactory("Player1", "X");
+const player2 = playerFactory("Player2", "O");
