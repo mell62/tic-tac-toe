@@ -10,12 +10,17 @@ const gameBoard = (() => {
   let playerTurn = 1;
   let playerToken;
 
-  const playGame = (cell) => {
-    if (playerTurn == 1) {
+  const getPlayerToken = () => {
+    if (playerTurn === 1) {
       playerToken = player1.getToken();
     } else {
       playerToken = player2.getToken();
     }
+    return playerToken;
+  };
+
+  const playGame = (cell) => {
+    playerToken = getPlayerToken();
     let row = Math.trunc(cell / 3);
     let column = cell % 3;
     if (!board[row][column]) {
