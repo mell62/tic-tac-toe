@@ -136,7 +136,13 @@ const gameBoard = (() => {
     }
   };
 
-  return { getBoard, playGame, getWinner };
+  const getDraw = () => {
+    if (identifyDraw()) {
+      return true;
+    }
+  };
+
+  return { getBoard, playGame, getWinner, getDraw };
 })();
 
 const displayController = (() => {
@@ -161,6 +167,8 @@ const displayController = (() => {
     render();
     if (gameBoard.getWinner()) {
       console.log("The winner is " + gameBoard.getWinner());
+    } else if (gameBoard.getDraw()) {
+      console.log("Game ended in a draw");
     }
   };
 
