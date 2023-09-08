@@ -9,6 +9,7 @@ const gameBoard = (() => {
 
   let playerTurn = 1;
   let playerToken;
+  let winnerToken;
 
   const getPlayerToken = () => {
     if (playerTurn === 1) {
@@ -45,7 +46,6 @@ const gameBoard = (() => {
       columnVictory(row, column, numberOfColumns) ||
       diagonalVictory(row, column)
     ) {
-      console.log("victory!!");
       return true;
     }
   };
@@ -58,6 +58,7 @@ const gameBoard = (() => {
       ) {
         if (board[row][column]) {
           //check for empty cell
+          winnerToken = board[row][column];
           return true;
         }
       }
@@ -72,6 +73,7 @@ const gameBoard = (() => {
       ) {
         if (board[row][column]) {
           //check for empty cell
+          winnerToken = board[row][column];
           return true;
         }
       }
@@ -85,6 +87,8 @@ const gameBoard = (() => {
       board[row + 1][column + 1] === board[row + 2][column + 2]
     ) {
       if (board[row][column]) {
+        //check for empty cell
+        winnerToken = board[row][column];
         return true;
       }
     } else if (
@@ -94,26 +98,13 @@ const gameBoard = (() => {
     ) {
       if (board[row + 2][column]) {
         //check for empty cell
+        winnerToken = board[row + 2][column];
         return true;
       }
     }
   };
 
   const identifyDraw = () => {
-    // more readable version
-    // let filledRows = 0;
-    // board.forEach((row) => {
-    //   if (row.indexOf("") === -1) {
-    //     filledRows += 1;
-    //   }
-    // });
-
-    // if (filledRows === 3) {
-    //   return true;
-    // } else {
-    //   return false;
-    // }
-
     let numberOfRows = board.length;
     for (let row = 0; row < numberOfRows; row++) {
       if (board[row].indexOf("") === -1) {
@@ -121,12 +112,31 @@ const gameBoard = (() => {
       } else {
         return false;
       }
+
+      // more readable version
+      // let filledRows = 0;
+      // board.forEach((row) => {
+      //   if (row.indexOf("") === -1) {
+      //     filledRows += 1;
+      //   }
+      // });
+
+      // if (filledRows === 3) {
+      //   return true;
+      // } else {
+      //   return false;
+      // }
     }
-    console.log("it's a draw");
     return true;
   };
 
-  return { getBoard, playGame };
+  const getWinner = () => {
+    if (identifyWin()) {
+      return winnerToken;
+    }
+  };
+
+  return { getBoard, playGame, getWinner };
 })();
 
 const displayController = (() => {
@@ -149,6 +159,9 @@ const displayController = (() => {
     let index = cell.getAttribute("data-index");
     gameBoard.playGame(index);
     render();
+    if (gameBoard.getWinner()) {
+      console.log("The winner is " + gameBoard.getWinner());
+    }
   };
 
   //bind events
