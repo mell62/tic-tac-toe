@@ -151,12 +151,21 @@ const gameBoard = (() => {
     }
   };
 
-  return { getBoard, playGame, getWinner, getDraw };
+  const resetBoard = () => {
+    board = [
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""],
+    ];
+  };
+
+  return { getBoard, playGame, getWinner, getDraw, resetBoard };
 })();
 
 const displayController = (() => {
   //DOM cache
   const cells = document.querySelectorAll(".ttt-cell");
+  const restartBtn = document.querySelector(".restart-btn");
 
   const render = () => {
     const board = gameBoard.getBoard();
@@ -181,10 +190,17 @@ const displayController = (() => {
     }
   };
 
+  const restartGame = () => {
+    gameBoard.resetBoard();
+    render();
+  };
+
   //bind events
   cells.forEach((cell) => {
     cell.addEventListener("click", clickRender.bind(null, cell));
   });
+
+  restartBtn.addEventListener("click", restartGame);
 
   return { render };
 })();
