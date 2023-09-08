@@ -47,6 +47,8 @@ const gameBoard = (() => {
       diagonalVictory(row, column)
     ) {
       return true;
+    } else {
+      false;
     }
   };
 
@@ -63,6 +65,7 @@ const gameBoard = (() => {
         }
       }
     }
+    return false;
   };
 
   const columnVictory = (row, column, numberOfColumns) => {
@@ -78,6 +81,7 @@ const gameBoard = (() => {
         }
       }
     }
+    return false;
   };
 
   const diagonalVictory = (row, column) => {
@@ -101,6 +105,8 @@ const gameBoard = (() => {
         winnerToken = board[row + 2][column];
         return true;
       }
+    } else {
+      return false;
     }
   };
 
@@ -112,33 +118,36 @@ const gameBoard = (() => {
       } else {
         return false;
       }
-
-      // more readable version
-      // let filledRows = 0;
-      // board.forEach((row) => {
-      //   if (row.indexOf("") === -1) {
-      //     filledRows += 1;
-      //   }
-      // });
-
-      // if (filledRows === 3) {
-      //   return true;
-      // } else {
-      //   return false;
-      // }
     }
     return true;
+    // more readable version
+    // let filledRows = 0;
+    // board.forEach((row) => {
+    //   if (row.indexOf("") === -1) {
+    //     filledRows += 1;
+    //   }
+    // });
+
+    // if (filledRows === 3) {
+    //   return true;
+    // } else {
+    //   return false;
+    // }
   };
 
   const getWinner = () => {
     if (identifyWin()) {
       return winnerToken;
+    } else {
+      return false;
     }
   };
 
   const getDraw = () => {
     if (identifyDraw()) {
       return true;
+    } else {
+      return false;
     }
   };
 
