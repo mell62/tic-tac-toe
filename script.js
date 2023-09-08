@@ -20,7 +20,7 @@ const gameBoard = (() => {
   };
 
   const playGame = (cell) => {
-    if (!identifyWin()) {
+    if (!identifyWin() && !identifyDraw()) {
       playerToken = getPlayerToken();
       let row = Math.trunc(cell / 3);
       let column = cell % 3;
@@ -45,6 +45,7 @@ const gameBoard = (() => {
       columnVictory(row, column, numberOfColumns) ||
       diagonalVictory(row, column)
     ) {
+      console.log("victory!!");
       return true;
     }
   };
@@ -96,6 +97,33 @@ const gameBoard = (() => {
         return true;
       }
     }
+  };
+
+  const identifyDraw = () => {
+    // more readable version
+    // let filledRows = 0;
+    // board.forEach((row) => {
+    //   if (row.indexOf("") === -1) {
+    //     filledRows += 1;
+    //   }
+    // });
+
+    // if (filledRows === 3) {
+    //   return true;
+    // } else {
+    //   return false;
+    // }
+
+    let numberOfRows = board.length;
+    for (let row = 0; row < numberOfRows; row++) {
+      if (board[row].indexOf("") === -1) {
+        continue;
+      } else {
+        return false;
+      }
+    }
+    console.log("it's a draw");
+    return true;
   };
 
   return { getBoard, playGame };
