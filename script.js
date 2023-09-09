@@ -207,6 +207,11 @@ const displayController = (() => {
   //DOM cache
   const cells = document.querySelectorAll(".ttt-cell");
   const restartBtn = document.querySelector(".restart-btn");
+  const setNameBtn1 = document.querySelector(".set-name-btn1");
+  const setNameBtn2 = document.querySelector(".set-name-btn2");
+  const player1Field = document.querySelector(".player1-field");
+  const player2Field = document.querySelector(".player2-field");
+  const playerForm = document.querySelector(".player-form");
 
   const render = () => {
     const board = gameBoard.getBoard();
@@ -263,12 +268,20 @@ const displayController = (() => {
     });
   };
 
+  const focusOnInput = (inputField) => {
+    inputField.removeAttribute("disabled");
+    inputField.focus();
+  };
+
   //bind events
   cells.forEach((cell) => {
     cell.addEventListener("click", clickRender.bind(null, cell));
   });
 
   restartBtn.addEventListener("click", restartGame);
+
+  setNameBtn1.addEventListener("click", focusOnInput.bind(null, player1Field));
+  setNameBtn2.addEventListener("click", focusOnInput.bind(null, player2Field));
 
   return { render };
 })();
