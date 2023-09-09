@@ -96,5 +96,20 @@ body{
     }
 }
 
+.restart-btn{
+    background-color: transparent;
+    border: 2px solid $white;
+    border-radius: 0.3rem;
+    padding: 0.8rem;
+    color: $white;
+    font-family: "Cantarell";
+    transition: box-shadow 300ms ease-in-out, transform 300ms ease-out;
+    cursor: pointer;
+}
+
+.restart-btn:hover{
+    transform: scale(1.05);
+    box-shadow: 1px 1px 0.5rem $white,-1px -1px 0.5rem $white;
+}
 
 
