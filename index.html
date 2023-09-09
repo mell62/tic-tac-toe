@@ -17,17 +17,53 @@
   </head>
   <body>
     <header><div class="heading">Tic-Tac-Toe</div></header>
-    <div class="ttt-grid">
-      <button class="ttt-cell" data-index="0"></button>
-      <button class="ttt-cell" data-index="1"></button>
-      <button class="ttt-cell" data-index="2"></button>
-      <button class="ttt-cell" data-index="3"></button>
-      <button class="ttt-cell" data-index="4"></button>
-      <button class="ttt-cell" data-index="5"></button>
-      <button class="ttt-cell" data-index="6"></button>
-      <button class="ttt-cell" data-index="7"></button>
-      <button class="ttt-cell" data-index="8"></button>
-    </div>
+    <main>
+      <div class="player1-name">
+        <form action="" class="player-form">
+          <input
+            type="text"
+            value="Player1"
+            class="player1-field"
+            disabled
+          /><button class="submit-name-btn">
+            <img
+              src="images/submit-purple.svg"
+              alt="submit-name-icon"
+              class="purple-check"
+            />
+          </button>
+        </form>
+        <button class="set-name-btn1">Set Name</button>
+      </div>
+      <div class="ttt-grid">
+        <button class="ttt-cell" data-index="0"></button>
+        <button class="ttt-cell" data-index="1"></button>
+        <button class="ttt-cell" data-index="2"></button>
+        <button class="ttt-cell" data-index="3"></button>
+        <button class="ttt-cell" data-index="4"></button>
+        <button class="ttt-cell" data-index="5"></button>
+        <button class="ttt-cell" data-index="6"></button>
+        <button class="ttt-cell" data-index="7"></button>
+        <button class="ttt-cell" data-index="8"></button>
+      </div>
+      <div class="player2-name">
+        <form action="" class="player-form">
+          <input
+            type="text"
+            value="Player2"
+            class="player2-field"
+            disabled
+          /><button class="submit-name-btn">
+            <img
+              src="images/submit-green.svg"
+              alt="submit-name-icon"
+              class="green-check"
+            />
+          </button>
+        </form>
+        <button class="set-name-btn2">Set Name</button>
+      </div>
+    </main>
     <button class="restart-btn">Restart</button>
   </body>
 </html>

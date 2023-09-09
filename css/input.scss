@@ -14,6 +14,12 @@ $secondary: #2cb67d;
     transform: scale(0.8);
 }
 
+:root{
+    font-family: "Cantarell";
+    font-size: clamp(0.8rem,2.5vw,1rem);
+    color: $white;
+}
+
 body{
     height: 100vh;
     width: 100vw;
@@ -34,7 +40,6 @@ body{
 }
 
 .ttt-grid{
-
     display: grid;
     grid-template: repeat(3,clamp(5rem,26vw,10rem)) / repeat(3,clamp(5rem,26vw,10rem));
 
@@ -96,6 +101,86 @@ body{
     }
 }
 
+main{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    font-size: clamp(0.8rem,2.5vw,1rem);
+
+    form{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 12rem;
+        height: 4rem;
+        
+        input:enabled{
+            width: clamp(5.5rem,20vw,8rem);
+            background-color: transparent;
+            color: $white;
+            border: 1px solid $white;
+            border-radius: 0.3rem;
+            height: 2rem;
+        }
+
+        input:disabled{
+            margin-right: auto;
+            width: 16rem;
+            color: $white;
+            background-color: transparent;
+            border: none;
+        }
+
+        input:disabled~button{
+            display: none;
+        }
+
+        button{
+            background-color: transparent;
+            border: none;
+            img{        
+                cursor: pointer;
+                transition: filter 300ms ease-out;
+            }
+
+            img.purple-check:hover{
+                filter: drop-shadow(1px 2px 2px $primary);
+            }
+
+            img.green-check:hover{
+                filter: drop-shadow(1px 2px 2px $secondary);
+            }
+        }
+    }
+
+    .set-name-btn1,
+    .set-name-btn2{
+        margin-right: auto;
+        border: 1px solid $white;
+        border-radius: 0.3rem;
+        background-color: transparent;
+        color: $white;
+        padding: 0.3rem;
+        width: clamp(5.5rem,20vw,8rem);
+        transition: box-shadow 300ms ease-in-out;
+        cursor: pointer;
+    }
+
+    .set-name-btn1:hover,
+    .set-name-btn2:hover{
+        box-shadow: 1px 1px 2px $white,-1px -1px 2px $white;
+    }
+
+    .player1-name,
+    .player2-name{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1vw;
+    }
+}
+
 .restart-btn{
     width: clamp(5.5rem,20vw,8rem);
     background-color: transparent;
@@ -103,9 +188,6 @@ body{
     border-radius: 0.3rem;
     padding: 0.8rem;
     color: $white;
-    font-family: "Cantarell";
-    font-size: clamp(0.8rem,2.5vw,1rem);
-    text-align: center;
     transition: box-shadow 300ms ease-in-out, transform 300ms ease-out;
     cursor: pointer;
 }
