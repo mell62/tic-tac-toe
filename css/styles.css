@@ -13,14 +13,13 @@ body {
   justify-content: center;
   font-family: "Josefin Slab";
   color: #fffffe;
-  font-size: 4rem;
+  font-size: clamp(2rem, 10vw, 4rem);
+  min-width: max-content;
 }
 
 .ttt-grid {
-  height: 30rem;
-  width: 30rem;
   display: grid;
-  grid-template: repeat(3, 10rem)/repeat(3, 10rem);
+  grid-template: repeat(3, clamp(5rem, 26vw, 10rem))/repeat(3, clamp(5rem, 26vw, 10rem));
 }
 .ttt-grid .ttt-cell {
   transition: transform 100ms ease-in, border 300ms, box-shadow 500ms;
@@ -77,12 +76,15 @@ body {
 }
 
 .restart-btn {
+  width: clamp(5.5rem, 20vw, 8rem);
   background-color: transparent;
   border: 2px solid #fffffe;
   border-radius: 0.3rem;
   padding: 0.8rem;
   color: #fffffe;
   font-family: "Cantarell";
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  text-align: center;
   transition: box-shadow 300ms ease-in-out, transform 300ms ease-out;
   cursor: pointer;
 }
