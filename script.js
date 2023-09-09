@@ -175,7 +175,8 @@ const displayController = (() => {
     for (let i = 0; i < totalCells; i++) {
       row = Math.trunc(i / 3);
       column = i % 3;
-      cells[i].textContent = board[row][column];
+      let token = board[row][column];
+      tokenRender(token, i);
     }
   };
 
@@ -187,6 +188,16 @@ const displayController = (() => {
       console.log("The winner is " + gameBoard.getWinner());
     } else if (gameBoard.getDraw()) {
       console.log("Game ended in a draw");
+    }
+  };
+
+  const tokenRender = (token, cell) => {
+    if (token === "X") {
+      cells[cell].classList.add("token-x");
+    } else if (token === "O") {
+      cells[cell].classList.add("token-o");
+    } else {
+      return;
     }
   };
 
