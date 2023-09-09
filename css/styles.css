@@ -8,11 +8,20 @@ body {
   height: 50%;
   width: 50%;
   display: grid;
-  grid-template: 1fr 1fr 1fr/1fr 1fr 1fr;
+  grid-template: repeat(3, 1fr)/repeat(3, 1fr);
+}
+.ttt-grid .ttt-cell {
+  transition: transform 100ms ease-in, border 300ms, box-shadow 500ms;
 }
 .ttt-grid .ttt-cell {
   background-color: transparent;
-  border: 3px solid #fffffe;
+  border: 2px solid #fffffe;
+  border-radius: 0.8rem;
+  margin: 0.3rem;
+  cursor: pointer;
+}
+.ttt-grid .ttt-cell:hover:not(.token-x-win, .token-o-win) {
+  transform: scale(1.03);
 }
 .ttt-grid .ttt-cell:nth-child(1),
 .ttt-grid .ttt-cell:nth-child(2),
@@ -34,15 +43,25 @@ body {
 .ttt-grid .ttt-cell:nth-child(9) {
   border-bottom: none;
 }
-
-.token-x {
+.ttt-grid .token-x {
   background: center no-repeat url("../images/token-x.svg");
   background-size: 30%;
+  border-color: #7f5af0;
+  box-shadow: 1px 1px 3px #7f5af0, -1px -1px 3px #7f5af0;
 }
-
-.token-o {
+.ttt-grid .token-o {
   background: center no-repeat url("../images/token-o.svg");
   background-size: 30%;
+  border-color: #2cb67d;
+  box-shadow: 1px 1px 3px #2cb67d, -1px -1px 3px #2cb67d;
+}
+.ttt-grid .token-x-win {
+  background-color: #202025;
+  transform: scale(0.8);
+}
+.ttt-grid .token-o-win {
+  background-color: #202025;
+  transform: scale(0.8);
 }
 
 /*# sourceMappingURL=styles.css.map */

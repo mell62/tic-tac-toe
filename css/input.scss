@@ -1,5 +1,18 @@
 $bg-color: #16161a;
 $white: #fffffe;
+$primary: #7f5af0;
+$secondary: #2cb67d;
+
+@mixin token-style($token-color){
+    background-size: 30%;
+    border-color: $token-color;
+    box-shadow: 1px 1px 3px $token-color, -1px -1px 3px $token-color;
+}
+
+@mixin token-win-design(){
+    background-color: #202025;
+    transform: scale(0.8);
+}
 
 body{
     height: 100vh;
@@ -11,11 +24,22 @@ body{
     height: 50%;
     width: 50%;
     display: grid;
-    grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+    grid-template: repeat(3,1fr) / repeat(3,1fr);
+
+    .ttt-cell{
+        transition: transform 100ms ease-in, border 300ms, box-shadow 500ms;
+    }
 
     .ttt-cell{
         background-color: transparent;
-        border: 3px solid $white;
+        border: 2px solid $white;
+        border-radius: 0.8rem;
+        margin: 0.3rem;
+        cursor: pointer;
+    }
+
+    .ttt-cell:hover:not(.token-x-win,.token-o-win){
+        transform: scale(1.03);
     }
 
     .ttt-cell:nth-child(1),
@@ -39,14 +63,26 @@ body{
     .ttt-cell:nth-child(9){
         border-bottom: none;
     }
+
+    .token-x{
+        background: center no-repeat url('../images/token-x.svg');
+        @include token-style($primary);
+        
+    }
+    
+    .token-o{
+        background: center no-repeat url('../images/token-o.svg');
+        @include token-style($secondary);
+    }
+
+    .token-x-win{
+        @include token-win-design();
+    }
+    
+    .token-o-win{
+        @include token-win-design();
+    }
 }
 
-.token-x{
-    background: center no-repeat url('../images/token-x.svg');
-    background-size: 30%;
-}
 
-.token-o{
-    background: center no-repeat url('../images/token-o.svg');
-    background-size: 30%;
-}
+
