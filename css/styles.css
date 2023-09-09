@@ -1,17 +1,48 @@
 body {
   height: 100vh;
   width: 100vw;
+  background-color: #16161a;
 }
 
 .ttt-grid {
   height: 50%;
   width: 50%;
-  border: 2px solid black;
   display: grid;
   grid-template: 1fr 1fr 1fr/1fr 1fr 1fr;
 }
 .ttt-grid .ttt-cell {
-  border: 1px solid black;
+  background-color: transparent;
+  border: 3px solid #fffffe;
+}
+.ttt-grid .ttt-cell:nth-child(1),
+.ttt-grid .ttt-cell:nth-child(2),
+.ttt-grid .ttt-cell:nth-child(3) {
+  border-top: none;
+}
+.ttt-grid .ttt-cell:nth-child(1),
+.ttt-grid .ttt-cell:nth-child(4),
+.ttt-grid .ttt-cell:nth-child(7) {
+  border-left: none;
+}
+.ttt-grid .ttt-cell:nth-child(3),
+.ttt-grid .ttt-cell:nth-child(6),
+.ttt-grid .ttt-cell:nth-child(9) {
+  border-right: none;
+}
+.ttt-grid .ttt-cell:nth-child(7),
+.ttt-grid .ttt-cell:nth-child(8),
+.ttt-grid .ttt-cell:nth-child(9) {
+  border-bottom: none;
+}
+
+.token-x {
+  background: center no-repeat url("../images/token-x.svg");
+  background-size: 30%;
+}
+
+.token-o {
+  background: center no-repeat url("../images/token-o.svg");
+  background-size: 30%;
 }
 
 /*# sourceMappingURL=styles.css.map */
