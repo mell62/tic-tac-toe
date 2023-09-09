@@ -18,13 +18,25 @@ body{
     height: 100vh;
     width: 100vw;
     background-color: $bg-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.heading{
+    display: flex;
+    justify-content: center;
+    font-family: "Josefin Slab";
+    color: $white;
+    font-size: 4rem;
 }
 
 .ttt-grid{
-    height: 50%;
-    width: 50%;
+    height: 30rem;
+    width: 30rem;
     display: grid;
-    grid-template: repeat(3,1fr) / repeat(3,1fr);
+    grid-template: repeat(3,10rem) / repeat(3,10rem);
 
     .ttt-cell{
         transition: transform 100ms ease-in, border 300ms, box-shadow 500ms;
