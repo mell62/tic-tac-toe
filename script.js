@@ -197,7 +197,7 @@ const displayController = (() => {
     } else if (token === "O") {
       cells[cell].classList.add("token-o");
     } else {
-      return;
+      cells[cell].classList.remove("token-x", "token-o");
     }
   };
 
