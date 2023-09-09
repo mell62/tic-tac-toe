@@ -10,6 +10,11 @@ const gameBoard = (() => {
   let playerTurn = 1;
   let playerToken;
   let winnerToken;
+  let victoryArray = [
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""],
+  ];
 
   const getPlayerToken = () => {
     if (playerTurn === 1) {
@@ -61,6 +66,9 @@ const gameBoard = (() => {
         if (board[row][column]) {
           //check for empty cell
           winnerToken = board[row][column];
+          victoryArray[row][column] = winnerToken;
+          victoryArray[row][column + 1] = winnerToken;
+          victoryArray[row][column + 2] = winnerToken;
           return true;
         }
       }
@@ -77,6 +85,9 @@ const gameBoard = (() => {
         if (board[row][column]) {
           //check for empty cell
           winnerToken = board[row][column];
+          victoryArray[row][column] = winnerToken;
+          victoryArray[row + 1][column] = winnerToken;
+          victoryArray[row + 2][column] = winnerToken;
           return true;
         }
       }
@@ -93,6 +104,9 @@ const gameBoard = (() => {
       if (board[row][column]) {
         //check for empty cell
         winnerToken = board[row][column];
+        victoryArray[row][column] = winnerToken;
+        victoryArray[row + 1][column + 1] = winnerToken;
+        victoryArray[row + 2][column + 2] = winnerToken;
         return true;
       }
     } else if (
@@ -103,6 +117,9 @@ const gameBoard = (() => {
       if (board[row + 2][column]) {
         //check for empty cell
         winnerToken = board[row + 2][column];
+        victoryArray[row + 2][column] = winnerToken;
+        victoryArray[row + 1][column + 1] = winnerToken;
+        victoryArray[row][column + 2] = winnerToken;
         return true;
       }
     } else {
@@ -151,15 +168,39 @@ const gameBoard = (() => {
     }
   };
 
+  const winIndices = () => {
+    victoryArray = victoryArray.flat();
+    let winIndicesArray = victoryArray.reduce((indicesArray, item, index) => {
+      if (item) {
+        indicesArray.push(index);
+      }
+      return indicesArray;
+    }, []);
+    return winIndicesArray;
+  };
+
   const resetBoard = () => {
     board = [
       ["", "", ""],
       ["", "", ""],
       ["", "", ""],
     ];
+    playerTurn = 1;
+    victoryArray = [
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""],
+    ];
   };
 
-  return { getBoard, playGame, getWinner, getDraw, resetBoard };
+  return {
+    getBoard,
+    playGame,
+    getWinner,
+    getDraw,
+    resetBoard,
+    winIndices,
+  };
 })();
 
 const displayController = (() => {
@@ -186,6 +227,7 @@ const displayController = (() => {
     render();
     if (gameBoard.getWinner()) {
       console.log("The winner is " + gameBoard.getWinner());
+      winRender(gameBoard.getWinner());
     } else if (gameBoard.getDraw()) {
       console.log("Game ended in a draw");
     }
@@ -197,13 +239,28 @@ const displayController = (() => {
     } else if (token === "O") {
       cells[cell].classList.add("token-o");
     } else {
-      cells[cell].classList.remove("token-x", "token-o");
+      cells[cell].classList.remove(
+        "token-x",
+        "token-o",
+        "token-x-win",
+        "token-o-win"
+      );
     }
   };
 
   const restartGame = () => {
     gameBoard.resetBoard();
     render();
+  };
+
+  const winRender = (token) => {
+    gameBoard.winIndices().forEach((index) => {
+      if (token === "X") {
+        cells[index].classList.add("token-x-win");
+      } else if (token === "O") {
+        cells[index].classList.add("token-o-win");
+      }
+    });
   };
 
   //bind events
