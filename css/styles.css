@@ -11,8 +11,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
-  gap: 1rem;
 }
 
 .heading {
@@ -22,64 +20,7 @@ body {
   color: #fffffe;
   font-size: clamp(2rem, 10vw, 4rem);
   min-width: max-content;
-}
-
-.ttt-grid {
-  display: grid;
-  grid-template: repeat(3, clamp(5rem, 26vw, 10rem))/repeat(3, clamp(5rem, 26vw, 10rem));
-}
-.ttt-grid .ttt-cell {
-  transition: transform 100ms ease-in, border 300ms, box-shadow 500ms;
-}
-.ttt-grid .ttt-cell {
-  background-color: transparent;
-  border: 2px solid #fffffe;
-  border-radius: 0.8rem;
-  margin: 0.3rem;
-  cursor: pointer;
-}
-.ttt-grid .ttt-cell:hover:not(.token-x-win, .token-o-win) {
-  transform: scale(1.03);
-}
-.ttt-grid .ttt-cell:nth-child(1),
-.ttt-grid .ttt-cell:nth-child(2),
-.ttt-grid .ttt-cell:nth-child(3) {
-  border-top: none;
-}
-.ttt-grid .ttt-cell:nth-child(1),
-.ttt-grid .ttt-cell:nth-child(4),
-.ttt-grid .ttt-cell:nth-child(7) {
-  border-left: none;
-}
-.ttt-grid .ttt-cell:nth-child(3),
-.ttt-grid .ttt-cell:nth-child(6),
-.ttt-grid .ttt-cell:nth-child(9) {
-  border-right: none;
-}
-.ttt-grid .ttt-cell:nth-child(7),
-.ttt-grid .ttt-cell:nth-child(8),
-.ttt-grid .ttt-cell:nth-child(9) {
-  border-bottom: none;
-}
-.ttt-grid .token-x {
-  background: center no-repeat url("../images/token-x.svg");
-  background-size: 30%;
-  border-color: #7f5af0;
-  box-shadow: 1px 1px 3px #7f5af0, -1px -1px 3px #7f5af0;
-}
-.ttt-grid .token-o {
-  background: center no-repeat url("../images/token-o.svg");
-  background-size: 30%;
-  border-color: #2cb67d;
-  box-shadow: 1px 1px 3px #2cb67d, -1px -1px 3px #2cb67d;
-}
-.ttt-grid .token-x-win {
-  background-color: #202025;
-  transform: scale(0.8);
-}
-.ttt-grid .token-o-win {
-  background-color: #202025;
-  transform: scale(0.8);
+  padding: 4rem;
 }
 
 main {
@@ -88,6 +29,63 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   gap: 12vmin;
+}
+main .ttt-grid {
+  display: grid;
+  grid-template: repeat(3, clamp(5rem, 26vw, 10rem))/repeat(3, clamp(5rem, 26vw, 10rem));
+}
+main .ttt-grid .ttt-cell {
+  transition: transform 100ms ease-in, border 300ms, box-shadow 500ms;
+}
+main .ttt-grid .ttt-cell {
+  background-color: transparent;
+  border: 2px solid #fffffe;
+  border-radius: 0.8rem;
+  margin: 0.3rem;
+  cursor: pointer;
+}
+main .ttt-grid .ttt-cell:hover:not(.token-x-win, .token-o-win) {
+  transform: scale(1.03);
+}
+main .ttt-grid .ttt-cell:nth-child(1),
+main .ttt-grid .ttt-cell:nth-child(2),
+main .ttt-grid .ttt-cell:nth-child(3) {
+  border-top: none;
+}
+main .ttt-grid .ttt-cell:nth-child(1),
+main .ttt-grid .ttt-cell:nth-child(4),
+main .ttt-grid .ttt-cell:nth-child(7) {
+  border-left: none;
+}
+main .ttt-grid .ttt-cell:nth-child(3),
+main .ttt-grid .ttt-cell:nth-child(6),
+main .ttt-grid .ttt-cell:nth-child(9) {
+  border-right: none;
+}
+main .ttt-grid .ttt-cell:nth-child(7),
+main .ttt-grid .ttt-cell:nth-child(8),
+main .ttt-grid .ttt-cell:nth-child(9) {
+  border-bottom: none;
+}
+main .ttt-grid .token-x {
+  background: center no-repeat url("../images/token-x.svg");
+  background-size: 30%;
+  border-color: #7f5af0;
+  box-shadow: 1px 1px 3px #7f5af0, -1px -1px 3px #7f5af0;
+}
+main .ttt-grid .token-o {
+  background: center no-repeat url("../images/token-o.svg");
+  background-size: 30%;
+  border-color: #2cb67d;
+  box-shadow: 1px 1px 3px #2cb67d, -1px -1px 3px #2cb67d;
+}
+main .ttt-grid .token-x-win {
+  background-color: #202025;
+  transform: scale(0.8);
+}
+main .ttt-grid .token-o-win {
+  background-color: #202025;
+  transform: scale(0.8);
 }
 main form {
   display: flex;
@@ -165,7 +163,10 @@ main .player2-score {
   color: #2cb67d;
 }
 
-.restart-btn {
+footer {
+  padding: 4rem;
+}
+footer .restart-btn {
   width: clamp(5.5rem, 20vw, 8rem);
   background-color: transparent;
   border: 2px solid #fffffe;
@@ -175,8 +176,7 @@ main .player2-score {
   transition: box-shadow 300ms ease-in-out, transform 300ms ease-out;
   cursor: pointer;
 }
-
-.restart-btn:hover {
+footer .restart-btn:hover {
   transform: scale(1.05);
   box-shadow: 1px 1px 0.5rem #fffffe, -1px -1px 0.5rem #fffffe;
 }

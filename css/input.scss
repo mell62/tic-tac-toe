@@ -27,8 +27,6 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
-    gap: 1rem;
 }
 
 .heading{
@@ -38,68 +36,7 @@ body{
     color: $white;
     font-size: clamp(2rem,10vw,4rem);
     min-width: max-content;
-}
-
-.ttt-grid{
-    display: grid;
-    grid-template: repeat(3,clamp(5rem,26vw,10rem)) / repeat(3,clamp(5rem,26vw,10rem));
-
-    .ttt-cell{
-        transition: transform 100ms ease-in, border 300ms, box-shadow 500ms;
-    }
-
-    .ttt-cell{
-        background-color: transparent;
-        border: 2px solid $white;
-        border-radius: 0.8rem;
-        margin: 0.3rem;
-        cursor: pointer;
-    }
-
-    .ttt-cell:hover:not(.token-x-win,.token-o-win){
-        transform: scale(1.03);
-    }
-
-    .ttt-cell:nth-child(1),
-    .ttt-cell:nth-child(2),
-    .ttt-cell:nth-child(3){
-        border-top: none;
-    }
-    .ttt-cell:nth-child(1),
-    .ttt-cell:nth-child(4),
-    .ttt-cell:nth-child(7){
-        border-left: none;
-        
-    }
-    .ttt-cell:nth-child(3),
-    .ttt-cell:nth-child(6),
-    .ttt-cell:nth-child(9){
-        border-right: none;
-    }
-    .ttt-cell:nth-child(7),
-    .ttt-cell:nth-child(8),
-    .ttt-cell:nth-child(9){
-        border-bottom: none;
-    }
-
-    .token-x{
-        background: center no-repeat url('../images/token-x.svg');
-        @include token-style($primary);
-        
-    }
-    
-    .token-o{
-        background: center no-repeat url('../images/token-o.svg');
-        @include token-style($secondary);
-    }
-
-    .token-x-win{
-        @include token-win-design();
-    }
-    
-    .token-o-win{
-        @include token-win-design();
-    }
+    padding: 4rem;
 }
 
 main{
@@ -108,6 +45,68 @@ main{
     flex-wrap: wrap;
     justify-content: center;
     gap: 12vmin;
+
+    .ttt-grid{
+        display: grid;
+        grid-template: repeat(3,clamp(5rem,26vw,10rem)) / repeat(3,clamp(5rem,26vw,10rem));
+    
+        .ttt-cell{
+            transition: transform 100ms ease-in, border 300ms, box-shadow 500ms;
+        }
+    
+        .ttt-cell{
+            background-color: transparent;
+            border: 2px solid $white;
+            border-radius: 0.8rem;
+            margin: 0.3rem;
+            cursor: pointer;
+        }
+    
+        .ttt-cell:hover:not(.token-x-win,.token-o-win){
+            transform: scale(1.03);
+        }
+    
+        .ttt-cell:nth-child(1),
+        .ttt-cell:nth-child(2),
+        .ttt-cell:nth-child(3){
+            border-top: none;
+        }
+        .ttt-cell:nth-child(1),
+        .ttt-cell:nth-child(4),
+        .ttt-cell:nth-child(7){
+            border-left: none;
+            
+        }
+        .ttt-cell:nth-child(3),
+        .ttt-cell:nth-child(6),
+        .ttt-cell:nth-child(9){
+            border-right: none;
+        }
+        .ttt-cell:nth-child(7),
+        .ttt-cell:nth-child(8),
+        .ttt-cell:nth-child(9){
+            border-bottom: none;
+        }
+    
+        .token-x{
+            background: center no-repeat url('../images/token-x.svg');
+            @include token-style($primary);
+            
+        }
+        
+        .token-o{
+            background: center no-repeat url('../images/token-o.svg');
+            @include token-style($secondary);
+        }
+    
+        .token-x-win{
+            @include token-win-design();
+        }
+        
+        .token-o-win{
+            @include token-win-design();
+        }
+    }
 
     form{
         display: flex;
@@ -198,20 +197,27 @@ main{
     }
 }
 
-.restart-btn{
-    width: clamp(5.5rem,20vw,8rem);
-    background-color: transparent;
-    border: 2px solid $white;
-    border-radius: 0.3rem;
-    padding: 0.8rem;
-    color: $white;
-    transition: box-shadow 300ms ease-in-out, transform 300ms ease-out;
-    cursor: pointer;
+footer{
+    padding: 4rem;
+
+    .restart-btn{
+        width: clamp(5.5rem,20vw,8rem);
+        background-color: transparent;
+        border: 2px solid $white;
+        border-radius: 0.3rem;
+        padding: 0.8rem;
+        color: $white;
+        transition: box-shadow 300ms ease-in-out, transform 300ms ease-out;
+        cursor: pointer;
+    }
+
+    .restart-btn:hover{
+        transform: scale(1.05);
+        box-shadow: 1px 1px 0.5rem $white,-1px -1px 0.5rem $white;
+    }
+
 }
 
-.restart-btn:hover{
-    transform: scale(1.05);
-    box-shadow: 1px 1px 0.5rem $white,-1px -1px 0.5rem $white;
-}
+
 
 
