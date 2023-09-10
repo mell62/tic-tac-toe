@@ -105,10 +105,11 @@ main form input:enabled {
 }
 main form input:disabled {
   margin-right: auto;
+  height: 2rem;
   width: 16rem;
   color: #fffffe;
   background-color: transparent;
-  border: none;
+  border: 1px solid transparent;
 }
 main form input:disabled ~ button {
   display: none;
@@ -119,7 +120,7 @@ main form button {
 }
 main form button img {
   cursor: pointer;
-  transition: filter 300ms ease-out;
+  transition: filter 150ms ease-in-out;
 }
 main form button img.purple-check:hover {
   filter: drop-shadow(1px 2px 2px #7f5af0);
