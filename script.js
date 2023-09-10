@@ -1,3 +1,23 @@
+const playerFactory = (name, token) => {
+  let playerName = name;
+  const getName = () => {
+    return playerName;
+  };
+
+  const setName = (name) => {
+    playerName = name;
+  };
+
+  const getToken = () => {
+    return token;
+  };
+
+  return { getName, setName, getToken };
+};
+
+const player1 = playerFactory("Player1", "X");
+const player2 = playerFactory("Player2", "O");
+
 const gameBoard = (() => {
   let board = [
     ["", "", ""],
@@ -209,11 +229,13 @@ const displayController = (() => {
   const restartBtn = document.querySelector(".restart-btn");
   const setNameBtn1 = document.querySelector(".set-name-btn1");
   const setNameBtn2 = document.querySelector(".set-name-btn2");
-  const player1Field = document.querySelector(".player1-field");
-  const player2Field = document.querySelector(".player2-field");
-  const playerForm = document.querySelector(".player-form");
+  const player1Field = document.querySelector("#player1-field");
+  const player2Field = document.querySelector("#player2-field");
+  const player1Form = document.querySelector(".player1-form");
+  const player2Form = document.querySelector(".player2-form");
 
   const render = () => {
+    displayPlayerName(player1Field, player2Field);
     const board = gameBoard.getBoard();
     let row;
     let column;
@@ -269,8 +291,27 @@ const displayController = (() => {
   };
 
   const focusOnInput = (inputField) => {
-    inputField.removeAttribute("disabled");
+    inputField.disabled = false;
     inputField.focus();
+  };
+
+  const blurOnInput = (inputField) => {
+    inputField.disabled = true;
+    inputField.blur();
+  };
+
+  const updatePlayerName = (nameField) => {
+    let newName = nameField.value;
+    if (nameField.getAttribute("id") === "player1-field") {
+      player1.setName(newName);
+    } else if (nameField.getAttribute("id") === "player2-field") {
+      player2.setName(newName);
+    }
+  };
+
+  const displayPlayerName = (nameField1, nameField2) => {
+    nameField1.value = player1.getName();
+    nameField2.value = player2.getName();
   };
 
   //bind events
@@ -282,22 +323,20 @@ const displayController = (() => {
 
   setNameBtn1.addEventListener("click", focusOnInput.bind(null, player1Field));
   setNameBtn2.addEventListener("click", focusOnInput.bind(null, player2Field));
+  player1Form.addEventListener("submit", (event) => event.preventDefault());
+  player1Form.addEventListener(
+    "submit",
+    updatePlayerName.bind(null, player1Field)
+  );
+  player1Form.addEventListener("submit", blurOnInput.bind(null, player1Field));
+  player2Form.addEventListener("submit", (event) => event.preventDefault());
+  player2Form.addEventListener(
+    "submit",
+    updatePlayerName.bind(null, player2Field)
+  );
+  player2Form.addEventListener("submit", blurOnInput.bind(null, player2Field));
 
   return { render };
 })();
 
 displayController.render();
-
-const playerFactory = (name, token) => {
-  const getName = () => {
-    return name;
-  };
-
-  const getToken = () => {
-    return token;
-  };
-  return { getName, getToken };
-};
-
-const player1 = playerFactory("Player1", "X");
-const player2 = playerFactory("Player2", "O");
