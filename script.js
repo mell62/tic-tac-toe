@@ -224,6 +224,9 @@ const gameBoard = (() => {
 })();
 
 const displayController = (() => {
+  let player1Score = 0;
+  let player2Score = 0;
+
   //DOM cache
   const cells = document.querySelectorAll(".ttt-cell");
   const restartBtn = document.querySelector(".restart-btn");
@@ -233,6 +236,8 @@ const displayController = (() => {
   const player2Field = document.querySelector("#player2-field");
   const player1Form = document.querySelector(".player1-form");
   const player2Form = document.querySelector(".player2-form");
+  const player1ScoreField = document.querySelector(".player1-score");
+  const player2ScoreField = document.querySelector(".player2-score");
 
   const render = () => {
     displayPlayerName(player1Field, player2Field);
@@ -253,8 +258,8 @@ const displayController = (() => {
     gameBoard.playGame(index);
     render();
     if (gameBoard.getWinner()) {
-      console.log("The winner is " + gameBoard.getWinner());
       winRender(gameBoard.getWinner());
+      updateScore(gameBoard.getWinner());
     } else if (gameBoard.getDraw()) {
       console.log("Game ended in a draw");
     }
@@ -290,6 +295,16 @@ const displayController = (() => {
     });
   };
 
+  const updateScore = (token) => {
+    if (token === "X") {
+      player1Score++;
+      player1ScoreField.textContent = player1Score;
+    } else if (token === "O") {
+      player2Score++;
+      player2ScoreField.textContent = player2Score;
+    }
+  };
+
   const focusOnInput = (inputField) => {
     inputField.disabled = false;
     inputField.focus();
@@ -323,6 +338,7 @@ const displayController = (() => {
 
   setNameBtn1.addEventListener("click", focusOnInput.bind(null, player1Field));
   setNameBtn2.addEventListener("click", focusOnInput.bind(null, player2Field));
+
   player1Form.addEventListener("submit", (event) => event.preventDefault());
   player1Form.addEventListener(
     "submit",
