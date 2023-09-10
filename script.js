@@ -226,6 +226,8 @@ const gameBoard = (() => {
 const displayController = (() => {
   let player1Score = 0;
   let player2Score = 0;
+  let restartFlag = false;
+  let checkRestartFlag = false;
 
   //DOM cache
   const cells = document.querySelectorAll(".ttt-cell");
@@ -259,7 +261,6 @@ const displayController = (() => {
     render();
     if (gameBoard.getWinner()) {
       winRender(gameBoard.getWinner());
-      updateScore(gameBoard.getWinner());
     } else if (gameBoard.getDraw()) {
       console.log("Game ended in a draw");
     }
@@ -281,11 +282,17 @@ const displayController = (() => {
   };
 
   const restartGame = () => {
+    setRestartFlag();
     gameBoard.resetBoard();
     render();
   };
 
+  const setRestartFlag = () => {
+    restartFlag = !restartFlag;
+  };
+
   const winRender = (token) => {
+    updateScore(token);
     gameBoard.winIndices().forEach((index) => {
       if (token === "X") {
         cells[index].classList.add("token-x-win");
@@ -296,12 +303,16 @@ const displayController = (() => {
   };
 
   const updateScore = (token) => {
-    if (token === "X") {
-      player1Score++;
-      player1ScoreField.textContent = player1Score;
-    } else if (token === "O") {
-      player2Score++;
-      player2ScoreField.textContent = player2Score;
+    if (restartFlag === checkRestartFlag) {
+      if (token === "X") {
+        player1Score++;
+        player1ScoreField.textContent = player1Score;
+        checkRestartFlag = !checkRestartFlag;
+      } else if (token === "O") {
+        player2Score++;
+        player2ScoreField.textContent = player2Score;
+        checkRestartFlag = !checkRestartFlag;
+      }
     }
   };
 
