@@ -182,6 +182,20 @@ main{
         align-items: center;
         gap: 1.5rem;
     }
+
+    .player1-score,
+    .player2-score{
+        font-family: "Josefin Slab";
+        font-size: clamp(1.5rem,7vw,2.5rem);
+    }
+
+    .player1-score{
+        color: $primary;
+    }
+
+    .player2-score{
+        color: $secondary;
+    }
 }
 
 .restart-btn{

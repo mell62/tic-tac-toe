@@ -153,6 +153,17 @@ main .player2-name {
   align-items: center;
   gap: 1.5rem;
 }
+main .player1-score,
+main .player2-score {
+  font-family: "Josefin Slab";
+  font-size: clamp(1.5rem, 7vw, 2.5rem);
+}
+main .player1-score {
+  color: #7f5af0;
+}
+main .player2-score {
+  color: #2cb67d;
+}
 
 .restart-btn {
   width: clamp(5.5rem, 20vw, 8rem);
