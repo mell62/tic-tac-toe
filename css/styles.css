@@ -12,6 +12,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  gap: 1rem;
 }
 
 .heading {
@@ -85,15 +86,15 @@ main {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  justify-content: center;
+  gap: 12vmin;
 }
 main form {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 12rem;
-  height: 4rem;
+  width: clamp(5.5rem, 20vw, 8rem);
+  height: 2rem;
 }
 main form input:enabled {
   width: clamp(5.5rem, 20vw, 8rem);
@@ -117,6 +118,7 @@ main form input:disabled ~ button {
 main form button {
   background-color: transparent;
   border: none;
+  padding-left: 1rem;
 }
 main form button img {
   cursor: pointer;
@@ -130,7 +132,7 @@ main form button img.green-check:hover {
 }
 main .set-name-btn1,
 main .set-name-btn2 {
-  margin-right: auto;
+  align-self: flex-start;
   border: 1px solid #fffffe;
   border-radius: 0.3rem;
   background-color: transparent;
@@ -149,7 +151,7 @@ main .player2-name {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1vw;
+  gap: 1.5rem;
 }
 
 .restart-btn {
