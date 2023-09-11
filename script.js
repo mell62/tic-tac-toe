@@ -240,6 +240,7 @@ const displayController = (() => {
   const player2Form = document.querySelector(".player2-form");
   const player1ScoreField = document.querySelector(".player1-score");
   const player2ScoreField = document.querySelector(".player2-score");
+  const drawMessage = document.querySelector(".draw-message");
 
   const render = () => {
     displayPlayerName(player1Field, player2Field);
@@ -262,7 +263,7 @@ const displayController = (() => {
     if (gameBoard.getWinner()) {
       winRender(gameBoard.getWinner());
     } else if (gameBoard.getDraw()) {
-      console.log("Game ended in a draw");
+      drawRender();
     }
   };
 
@@ -283,12 +284,15 @@ const displayController = (() => {
 
   const restartGame = () => {
     setRestartFlag();
+    removeDrawRender();
     gameBoard.resetBoard();
     render();
   };
 
   const setRestartFlag = () => {
-    restartFlag = !restartFlag;
+    if (gameBoard.getWinner()) {
+      restartFlag = !restartFlag;
+    }
   };
 
   const winRender = (token) => {
@@ -300,6 +304,14 @@ const displayController = (() => {
         cells[index].classList.add("token-o-win");
       }
     });
+  };
+
+  const drawRender = () => {
+    drawMessage.style.opacity = "1";
+  };
+
+  const removeDrawRender = () => {
+    drawMessage.style.opacity = "0";
   };
 
   const updateScore = (token) => {
