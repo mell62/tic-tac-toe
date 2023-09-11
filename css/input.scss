@@ -4,7 +4,7 @@ $primary: #7f5af0;
 $secondary: #2cb67d;
 
 @mixin token-style($token-color){
-    background-size: 30%;
+    background-size: 35%;
     border-color: $token-color;
     box-shadow: 1px 1px 3px $token-color, -1px -1px 3px $token-color;
 }

@@ -69,13 +69,13 @@ main .ttt-grid .ttt-cell:nth-child(9) {
 }
 main .ttt-grid .token-x {
   background: center no-repeat url("../images/token-x.svg");
-  background-size: 30%;
+  background-size: 35%;
   border-color: #7f5af0;
   box-shadow: 1px 1px 3px #7f5af0, -1px -1px 3px #7f5af0;
 }
 main .ttt-grid .token-o {
   background: center no-repeat url("../images/token-o.svg");
-  background-size: 30%;
+  background-size: 35%;
   border-color: #2cb67d;
   box-shadow: 1px 1px 3px #2cb67d, -1px -1px 3px #2cb67d;
 }
