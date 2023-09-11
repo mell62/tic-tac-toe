@@ -224,8 +224,8 @@ const gameBoard = (() => {
 })();
 
 const displayController = (() => {
-  let player1Score = 0;
-  let player2Score = 0;
+  let player1Score = "-";
+  let player2Score = "-";
   let restartFlag = false;
   let checkRestartFlag = false;
 
@@ -241,6 +241,7 @@ const displayController = (() => {
   const player1ScoreField = document.querySelector(".player1-score");
   const player2ScoreField = document.querySelector(".player2-score");
   const drawMessage = document.querySelector(".draw-message");
+  const switchBtn = document.querySelector(".switch-btn");
 
   const render = () => {
     displayPlayerName(player1Field, player2Field);
@@ -315,6 +316,7 @@ const displayController = (() => {
   };
 
   const updateScore = (token) => {
+    convertScoreToZero();
     if (restartFlag === checkRestartFlag) {
       if (token === "X") {
         player1Score++;
@@ -325,6 +327,15 @@ const displayController = (() => {
         player2ScoreField.textContent = player2Score;
         checkRestartFlag = !checkRestartFlag;
       }
+    }
+  };
+
+  const convertScoreToZero = () => {
+    if (player1Score === "-") {
+      player1Score = 0;
+    }
+    if (player2Score === "-") {
+      player2Score = 0;
     }
   };
 
@@ -350,6 +361,26 @@ const displayController = (() => {
   const displayPlayerName = (nameField1, nameField2) => {
     nameField1.value = player1.getName();
     nameField2.value = player2.getName();
+  };
+
+  const playerSwitch = () => {
+    nameSwitch();
+    scoreSwitch();
+    player1ScoreField.textContent = player1Score;
+    player2ScoreField.textContent = player2Score;
+    render();
+  };
+
+  const nameSwitch = () => {
+    let tempPlayerHolder = player1.getName();
+    player1.setName(player2.getName());
+    player2.setName(tempPlayerHolder);
+  };
+
+  const scoreSwitch = () => {
+    let tempScoreHolder = player1Score;
+    player1Score = player2Score;
+    player2Score = tempScoreHolder;
   };
 
   //bind events
@@ -383,6 +414,7 @@ const displayController = (() => {
   );
   player2Form.addEventListener("submit", blurOnInput.bind(null, player2Field));
 
+  switchBtn.addEventListener("click", playerSwitch);
   return { render };
 })();
 
