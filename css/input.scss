@@ -36,7 +36,7 @@ body{
     color: $white;
     font-size: clamp(2rem,10vw,4rem);
     min-width: max-content;
-    padding: 4rem;
+    padding: 3rem;
 }
 
 main{
@@ -44,14 +44,24 @@ main{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 12vmin;
+
+    .draw-message{
+        width: 100%;
+        text-align: center;
+        padding-bottom: 1rem;
+        font-family: "Josefin Slab";
+        font-size: clamp(1rem,2.8vw,1.3rem);
+        user-select: none;
+        opacity: 0;
+        transition: opacity 300ms ease-in;
+    }
 
     .ttt-grid{
         display: grid;
-        grid-template: repeat(3,clamp(5rem,26vw,10rem)) / repeat(3,clamp(5rem,26vw,10rem));
+        grid-template: repeat(3,clamp(6.5rem,26vw,10rem)) / repeat(3,clamp(6.5rem,26vw,10rem));
     
         .ttt-cell{
-            transition: transform 100ms ease-in, border 300ms, box-shadow 500ms;
+            transition: transform 100ms ease-in, border 300ms ease-in, box-shadow 450ms ease-in;
         }
     
         .ttt-cell{
@@ -178,8 +188,10 @@ main{
         display: flex;
         flex-direction: column;
         align-items: start;
+        margin-left: 8rem;
         gap: 1.5rem;
     }
+
 
     .player1-score,
     .player2-score{
@@ -200,7 +212,7 @@ main{
 }
 
 footer{
-    padding: 4rem;
+    padding: 3rem;
 
     .restart-btn{
         width: clamp(5.5rem,20vw,8rem);
