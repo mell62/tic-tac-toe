@@ -1,4 +1,4 @@
-# Tic Tac Toe
+# Tic-Tac-Toe
 
 Tic-tac-toe, the evergreen boredom buster, developed using HTML, CSS and JavaScript, showcasing the JavaScript **Module Pattern**.
 
