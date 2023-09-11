@@ -240,7 +240,7 @@ const displayController = (() => {
   const player2Form = document.querySelector(".player2-form");
   const player1ScoreField = document.querySelector(".player1-score");
   const player2ScoreField = document.querySelector(".player2-score");
-  const drawMessage = document.querySelector(".draw-message");
+  const resultMessage = document.querySelector(".result-message");
   const switchBtn = document.querySelector(".switch-btn");
 
   const render = () => {
@@ -262,9 +262,11 @@ const displayController = (() => {
     gameBoard.playGame(index);
     render();
     if (gameBoard.getWinner()) {
-      winRender(gameBoard.getWinner());
+      let token = gameBoard.getWinner();
+      winRender(token);
+      loadResult(token);
     } else if (gameBoard.getDraw()) {
-      drawRender();
+      loadResult(gameBoard.getDraw());
     }
   };
 
@@ -285,7 +287,7 @@ const displayController = (() => {
 
   const restartGame = () => {
     setRestartFlag();
-    removeDrawRender();
+    removeResultRender();
     gameBoard.resetBoard();
     render();
   };
@@ -307,12 +309,23 @@ const displayController = (() => {
     });
   };
 
-  const drawRender = () => {
-    drawMessage.style.opacity = "1";
+  const loadResult = (token) => {
+    if (token === player1.getToken()) {
+      resultMessage.textContent = `${player1.getName()} has won`;
+    } else if (token === player2.getToken()) {
+      resultMessage.textContent = `${player2.getName()} has won`;
+    } else {
+      resultMessage.textContent = "it's a draw";
+    }
+    resultRender();
   };
 
-  const removeDrawRender = () => {
-    drawMessage.style.opacity = "0";
+  const resultRender = () => {
+    resultMessage.style.opacity = "1";
+  };
+
+  const removeResultRender = () => {
+    resultMessage.style.opacity = "0";
   };
 
   const updateScore = (token) => {
