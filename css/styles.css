@@ -89,26 +89,23 @@ main .ttt-grid .token-o-win {
 }
 main form {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: clamp(5.5rem, 20vw, 8rem);
+  width: 16rem;
   height: 2rem;
+}
+main form input {
+  height: 2rem;
+  border: 1px solid #fffffe;
+  color: #fffffe;
+  background-color: transparent;
 }
 main form input:enabled {
   width: clamp(5.5rem, 20vw, 8rem);
-  background-color: transparent;
-  color: #fffffe;
-  border: 1px solid #fffffe;
   border-radius: 0.3rem;
-  height: 2rem;
 }
 main form input:disabled {
   margin-right: auto;
-  height: 2rem;
   width: 16rem;
-  color: #fffffe;
-  background-color: transparent;
-  border: 1px solid transparent;
+  border-color: transparent;
 }
 main form input:disabled ~ button {
   display: none;
@@ -148,13 +145,15 @@ main .player1-name,
 main .player2-name {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   gap: 1.5rem;
 }
 main .player1-score,
 main .player2-score {
   font-family: "Josefin Slab";
   font-size: clamp(1.5rem, 7vw, 2.5rem);
+  width: clamp(5.5rem, 20vw, 8rem);
+  text-align: center;
 }
 main .player1-score {
   color: #7f5af0;
