@@ -25,7 +25,7 @@ Tic-tac-toe, the evergreen boredom buster, developed using HTML, CSS and JavaScr
 ## :electric_plug: Extra features
 
 - Displays the score of both players
-- Switch players: Players can switch their token by clicking the switch players button just below the tic-tac-toe grid
+- Switch players: Players can switch their token after a round by clicking the switch players button just below the tic-tac-toe grid
 - The tic-tac-toe grid gives a visual indicator of how the player won the round
 
 ## :grey_exclamation: Limitations
