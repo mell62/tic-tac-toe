@@ -30,7 +30,7 @@ main {
   justify-content: center;
   gap: 1rem;
 }
-main .draw-message {
+main .result-message {
   width: 100%;
   text-align: center;
   font-family: "Josefin Slab", serif;
