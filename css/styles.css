@@ -1,5 +1,5 @@
 :root {
-  font-family: "Cantarell";
+  font-family: "Cantarell", sans-serif;
   font-size: clamp(0.8rem, 2.5vw, 1.1rem);
   color: #fffffe;
 }
@@ -16,7 +16,7 @@ body {
 .heading {
   display: flex;
   justify-content: center;
-  font-family: "Josefin Slab";
+  font-family: "Josefin Slab", serif;
   color: #fffffe;
   font-size: clamp(2rem, 10vw, 4rem);
   min-width: max-content;
@@ -33,7 +33,7 @@ main {
 main .draw-message {
   width: 100%;
   text-align: center;
-  font-family: "Josefin Slab";
+  font-family: "Josefin Slab", serif;
   font-size: clamp(1rem, 2.8vw, 1.4rem);
   user-select: none;
   opacity: 0;
@@ -160,7 +160,7 @@ main .player2-name {
 }
 main .player1-score,
 main .player2-score {
-  font-family: "Josefin Slab";
+  font-family: "Josefin Slab", serif;
   font-size: clamp(1.5rem, 7vw, 2.7rem);
   width: clamp(5.5rem, 20vw, 8rem);
   text-align: center;
