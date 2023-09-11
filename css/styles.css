@@ -1,6 +1,6 @@
 :root {
   font-family: "Cantarell";
-  font-size: clamp(0.8rem, 2.5vw, 1.1rem);
+  font-size: clamp(0.8rem, 2.5vw, 1.2rem);
   color: #fffffe;
 }
 
@@ -28,13 +28,13 @@ main {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.2rem;
 }
 main .draw-message {
   width: 100%;
   text-align: center;
   font-family: "Josefin Slab";
-  font-size: clamp(1rem, 2.8vw, 1.4rem);
+  font-size: clamp(1rem, 2.8vw, 1.5rem);
   user-select: none;
   opacity: 0;
   transition: opacity 300ms ease-in;
@@ -80,13 +80,13 @@ main .ttt-grid .token-x {
   background: center no-repeat url("../images/token-x.svg");
   background-size: 35%;
   border-color: #7f5af0;
-  box-shadow: 2px 2px 3px #7f5af0, -2px -2px 3px #7f5af0;
+  box-shadow: 2px 2px 4px #7f5af0, -2px -2px 4px #7f5af0;
 }
 main .ttt-grid .token-o {
   background: center no-repeat url("../images/token-o.svg");
   background-size: 35%;
   border-color: #2cb67d;
-  box-shadow: 2px 2px 3px #2cb67d, -2px -2px 3px #2cb67d;
+  box-shadow: 2px 2px 4px #2cb67d, -2px -2px 4px #2cb67d;
 }
 main .ttt-grid .token-x-win {
   background-color: #202025;
@@ -161,7 +161,7 @@ main .player2-name {
 main .player1-score,
 main .player2-score {
   font-family: "Josefin Slab";
-  font-size: clamp(1.5rem, 7vw, 2.7rem);
+  font-size: clamp(1.5rem, 7vw, 2.8rem);
   width: clamp(5.5rem, 20vw, 8rem);
   text-align: center;
   cursor: default;
