@@ -320,14 +320,18 @@ const displayController = (() => {
     if (restartFlag === checkRestartFlag) {
       if (token === "X") {
         player1Score++;
-        player1ScoreField.textContent = player1Score;
         checkRestartFlag = !checkRestartFlag;
       } else if (token === "O") {
         player2Score++;
-        player2ScoreField.textContent = player2Score;
         checkRestartFlag = !checkRestartFlag;
       }
+      renderScore();
     }
+  };
+
+  const renderScore = () => {
+    player1ScoreField.textContent = player1Score;
+    player2ScoreField.textContent = player2Score;
   };
 
   const convertScoreToZero = () => {
@@ -366,8 +370,7 @@ const displayController = (() => {
   const playerSwitch = () => {
     nameSwitch();
     scoreSwitch();
-    player1ScoreField.textContent = player1Score;
-    player2ScoreField.textContent = player2Score;
+    renderScore();
     render();
   };
 
