@@ -114,15 +114,15 @@ main{
         height: 2rem;
         
         input{
-            height: 2rem;
             border: 1px solid $white;
+            border-radius: 0.3rem;
             color: $white;
             background-color: transparent;
+            padding: 0.5rem
         }
 
         input:enabled{
             width: clamp(5.5rem,20vw,8rem);
-            border-radius: 0.3rem;
         }
 
         input:disabled{
@@ -163,6 +163,7 @@ main{
         color: $white;
         padding: 0.3rem;
         width: clamp(5.5rem,20vw,8rem);
+        height: 2rem;
         transition: box-shadow 300ms ease-in-out;
         cursor: pointer;
     }
@@ -186,6 +187,7 @@ main{
         font-size: clamp(1.5rem,7vw,2.5rem);
         width: clamp(5.5rem,20vw,8rem);
         text-align: center;
+        cursor: default;
     }
 
     .player1-score{
