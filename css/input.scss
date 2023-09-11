@@ -6,7 +6,7 @@ $secondary: #2cb67d;
 @mixin token-style($token-color){
     background-size: 35%;
     border-color: $token-color;
-    box-shadow: 1px 1px 3px $token-color, -1px -1px 3px $token-color;
+    box-shadow: 2px 2px 3px $token-color, -2px -2px 3px $token-color;
 }
 
 @mixin token-win-design(){
@@ -16,7 +16,7 @@ $secondary: #2cb67d;
 
 :root{
     font-family: "Cantarell";
-    font-size: clamp(0.8rem,2.5vw,1rem);
+    font-size: clamp(0.8rem,2.5vw,1.1rem);
     color: $white;
 }
 
@@ -50,7 +50,7 @@ main{
         width: 100%;
         text-align: center;
         font-family: "Josefin Slab";
-        font-size: clamp(1rem,2.8vw,1.3rem);
+        font-size: clamp(1rem,2.8vw,1.4rem);
         user-select: none;
         opacity: 0;
         transition: opacity 300ms ease-in;
@@ -196,7 +196,7 @@ main{
     .player1-score,
     .player2-score{
         font-family: "Josefin Slab";
-        font-size: clamp(1.5rem,7vw,2.5rem);
+        font-size: clamp(1.5rem,7vw,2.7rem);
         width: clamp(5.5rem,20vw,8rem);
         text-align: center;
         cursor: default;
