@@ -173,8 +173,24 @@ main .player2-score {
   color: #2cb67d;
 }
 
+.switch-btn-container {
+  padding-top: 1.5rem;
+}
+.switch-btn-container .switch-btn {
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 0.3rem;
+  padding-top: 0.3rem;
+  cursor: pointer;
+  transition: filter 300ms ease-in-out, background-color 300ms ease-in-out;
+}
+.switch-btn-container .switch-btn:hover {
+  filter: invert(1);
+  background-color: #000001;
+}
+
 footer {
-  padding: 3rem;
+  padding: 1.5rem;
 }
 footer .restart-btn {
   width: clamp(5.5rem, 20vw, 8rem);

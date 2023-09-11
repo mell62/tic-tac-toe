@@ -2,6 +2,7 @@ $bg-color: #16161a;
 $white: #fffffe;
 $primary: #7f5af0;
 $secondary: #2cb67d;
+$inverted-white: #000001;
 
 @mixin token-style($token-color){
     background-size: 35%;
@@ -211,8 +212,26 @@ main{
     }
 }
 
+.switch-btn-container{
+    padding-top: 1.5rem;
+
+    .switch-btn{
+        background-color: transparent;
+        border: 2px solid white;
+        border-radius: 0.3rem;
+        padding-top: 0.3rem;
+        cursor: pointer;
+        transition: filter 300ms ease-in-out, background-color 300ms ease-in-out;
+    }
+
+    .switch-btn:hover{
+        filter: invert(1);
+        background-color: $inverted-white;
+    }
+}
+
 footer{
-    padding: 3rem;
+    padding: 1.5rem;
 
     .restart-btn{
         width: clamp(5.5rem,20vw,8rem);
