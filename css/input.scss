@@ -118,15 +118,13 @@ main{
             border-radius: 0.3rem;
             color: $white;
             background-color: transparent;
-            padding: 0.5rem
-        }
-
-        input:enabled{
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            transition: border-color 400ms ease-out, width 500ms ease-in-out;
             width: clamp(5.5rem,20vw,8rem);
         }
 
         input:disabled{
-            margin-right: auto;
             width: 16rem;
             border-color: transparent;
         }
