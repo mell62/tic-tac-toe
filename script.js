@@ -329,9 +329,9 @@ const displayController = (() => {
   const updatePlayerName = (nameField) => {
     let newName = nameField.value;
     if (nameField.getAttribute("id") === "player1-field") {
-      player1.setName(newName);
+      player1.setName(newName || "Player1");
     } else if (nameField.getAttribute("id") === "player2-field") {
-      player2.setName(newName);
+      player2.setName(newName || "Player2");
     }
   };
 
@@ -355,11 +355,19 @@ const displayController = (() => {
     "submit",
     updatePlayerName.bind(null, player1Field)
   );
+  player1Form.addEventListener(
+    "submit",
+    displayPlayerName.bind(null, player1Field, player2Field)
+  );
   player1Form.addEventListener("submit", blurOnInput.bind(null, player1Field));
   player2Form.addEventListener("submit", (event) => event.preventDefault());
   player2Form.addEventListener(
     "submit",
     updatePlayerName.bind(null, player2Field)
+  );
+  player2Form.addEventListener(
+    "submit",
+    displayPlayerName.bind(null, player1Field, player2Field)
   );
   player2Form.addEventListener("submit", blurOnInput.bind(null, player2Field));
 
