@@ -35,6 +35,11 @@ const gameBoard = (() => {
     ["", "", ""],
     ["", "", ""],
   ];
+  let emptyBoard = [
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""],
+  ];
 
   const getPlayerToken = () => {
     if (playerTurn === 1) {
@@ -199,6 +204,14 @@ const gameBoard = (() => {
     return winIndicesArray;
   };
 
+  const isEmptyBoard = () => {
+    if (board.join() === emptyBoard.join()) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   const resetBoard = () => {
     board = [
       ["", "", ""],
@@ -220,6 +233,7 @@ const gameBoard = (() => {
     getDraw,
     resetBoard,
     winIndices,
+    isEmptyBoard,
   };
 })();
 
@@ -381,10 +395,16 @@ const displayController = (() => {
   };
 
   const playerSwitch = () => {
-    nameSwitch();
-    scoreSwitch();
-    renderScore();
-    render();
+    if (
+      gameBoard.getWinner() ||
+      gameBoard.getDraw() ||
+      gameBoard.isEmptyBoard()
+    ) {
+      nameSwitch();
+      scoreSwitch();
+      renderScore();
+      render();
+    }
   };
 
   const nameSwitch = () => {
